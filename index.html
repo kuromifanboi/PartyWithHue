@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Music Lights Sync</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 40px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        img {
+            max-width: 300px;
+            margin-bottom: 20px;
+        }
+
+        .controls {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Music Lights Sync</h1>
+    
+    {% if track_name %}
+        <h2>Currently Playing:</h2>
+        <h3>{{ track_name }}</h3>
+        <p>By {{ artist_name }}</p>
+        <img src="{{ album_artwork_url }}" alt="Album Artwork">
+    {% else %}
+        <p>No music is currently playing.</p>
+    {% endif %}
+    
+    <div class="controls">
+        <form action="/controls" method="POST">
+            <button type="submit" name="action" value="brighten">Brighten Lights</button>
+            <button type="submit" name="action" value="dim">Dim Lights</button>
+            <button type="submit" name="action" value="color">Change Color</button>
+        </form>
+    </div>
+</body>
+</html>
